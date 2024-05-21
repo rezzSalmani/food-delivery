@@ -13,7 +13,7 @@ const ProductItem = ({ image01, title, price, id }) => {
   return (
     <div
       className="flex-all flex-col p-2 xs:p-5 border border-third
-    gap-y-5 shadow-xl overflow-hidden"
+    gap-y-5 shadow-lg overflow-hidden"
     >
       <div className="flex-all hover:scale-[1.2] transition-all w-20 xs:w-28 md:w-32 xs:h-[128px] duration-[0.4s]">
         <img

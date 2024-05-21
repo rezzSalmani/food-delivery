@@ -19,12 +19,22 @@ const CartModal = ({ open, onClose }) => {
     }
   };
   useOutsideClick(onClose, modalRef);
+  const handleAddItem = item => {
+    dispatch(
+      cartActions.addItem({
+        id: item.id,
+        title: item.title,
+        price: item.price,
+        image: item.image,
+      })
+    );
+  };
   return createPortal(
     <div
       ref={modalRef}
       className={`flex flex-col gap-5 bg-zinc-100 h-screen fixed right-0 top-0 transition-all shadow-2xl z-50 overflow-hidden ${
         open
-          ? 'w-3/5 xs:w-2/4 md:w-2/6 lg:w-1/4 xl:w-1/4 visible '
+          ? 'w-3/5 xs:w-2/4 md:w-2/6 lg:w-1/3 xl:w-1/4 visible '
           : ' w-0 invisible '
       }`}
     >
@@ -54,12 +64,16 @@ const CartModal = ({ open, onClose }) => {
         {cartItems.length > 0 ? (
           cartItems.map(item => (
             <div
-              className="flex items-center justify-evenly xs:justify-between  gap-1 sm:gap-4 xs:px-2 xs:py-2"
+              className="flex xs:items-center justify-evenly xs:justify-between pt-4 gap-1 sm:gap-4 xs:px-2 xs:py-2"
               key={item.id}
             >
-              <div className="flex flex-col xs:flex-row items-center gap-2 sm:gap-3 xl:gap-6 mt-4 ">
+              <div className="flex flex-col xs:flex-row items-center gap-2 sm:gap-3 xl:gap-6">
                 <div className=" w-12 md:w-14">
-                  <img src={`.${item.image}`} className="w-full" alt="food" />
+                  <img
+                    src={`.${item.image}`}
+                    className="w-full rounded-full mix-blend-multiply"
+                    alt="food"
+                  />
                 </div>
                 <div className="flex flex-col items-center xs:items-start space-y-1 xs:space-y-2 text-sm md:text-base font-lato  ">
                   <h5 className="text-center">{item.title}</h5>
@@ -68,20 +82,7 @@ const CartModal = ({ open, onClose }) => {
                     <span className="text-secondary">${item.price}</span>
                   </div>
                   <div className="flex justify-between items-center gap-2 bg-third px-2 rounded-lg shadow-md w-28 text-sm md:text-base">
-                    <button
-                      onClick={() =>
-                        dispatch(
-                          cartActions.addItem({
-                            id: item.id,
-                            title: item.title,
-                            price: item.price,
-                            image: item.image,
-                          })
-                        )
-                      }
-                    >
-                      +
-                    </button>
+                    <button onClick={() => handleAddItem(item)}>+</button>
                     <span>{item.quantity}</span>
                     <button
                       onClick={() => dispatch(cartActions.removeItem(item.id))}
@@ -91,7 +92,8 @@ const CartModal = ({ open, onClose }) => {
                   </div>
                 </div>
               </div>
-              <div className="pr-2 md:pr-5">
+              {/* fully remove item */}
+              <div className=" pr-2 md:pr-5">
                 <span
                   className="inline-block cursor-pointer hover:text-secondary transition-all"
                   onClick={() => dispatch(cartActions.removeWholeItem(item.id))}

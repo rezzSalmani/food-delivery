@@ -7,7 +7,7 @@ import Footer from '../footer/Footer.jsx';
 import { scrollToTop } from '../../util/util.js';
 const Layout = () => {
   useEffect(() => {
-    scrollToTop();
+    // scrollToTop();
   }, []);
 
   return (

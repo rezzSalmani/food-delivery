@@ -3,12 +3,13 @@ import { toast } from 'react-toastify';
 export const notify = (
   message = 'Product added to your Cart!',
   position = 'bottom-right',
-  type = 'success'
+  type = 'success',
+  autoClose = 1000
 ) => {
   if (type === 'success') {
     return toast.success(message, {
       position,
-      autoClose: 1000,
+      autoClose,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -19,7 +20,7 @@ export const notify = (
   } else {
     toast.info(message, {
       position,
-      autoClose: 1000,
+      autoClose,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,

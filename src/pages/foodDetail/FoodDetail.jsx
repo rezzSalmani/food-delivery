@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 import Common from '../../components/UI/Common';
 import StarRating from '../../components/UI/StarRating';
 import ProductItem from '../../components/product/ProductItem';
-import { json, useLoaderData, useParams } from 'react-router-dom';
+import { json, useLoaderData } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { cartActions } from '../../store/cartSlice';
 import { notify } from '../../components/UI/notify';
 import { supabase } from '../../supabaseClient';
+
 const FoodDetail = () => {
   const [tab, setTab] = useState('desc');
   const dispatch = useDispatch();
@@ -27,6 +28,11 @@ const FoodDetail = () => {
     dispatch(cartActions.addItem({ id, title, price, image: image01 }));
     notify();
   };
+  const handleSendComment = e => {
+    e.preventDefault();
+    e.target.reset();
+    notify('Thanks for Your Comment❤️');
+  };
   return (
     <section className="">
       <Common title={title} />
@@ -38,28 +44,28 @@ const FoodDetail = () => {
               className="hover:scale-110 "
               onClick={() => setPreviewImg(image01)}
             >
-              <img src={`${image01}`} alt="" />
+              <img src={image01} className="mix-blend-multiply" alt={title} />
             </div>
             <div
               className="hover:scale-110"
               onClick={() => setPreviewImg(image02)}
             >
-              <img src={`${image02}`} alt="" />
+              <img src={image02} className="mix-blend-multiply" alt={title} />
             </div>
             <div
               className="hover:scale-110"
               onClick={() => setPreviewImg(image03)}
             >
-              <img src={`${image03}`} alt="" />
+              <img src={image03} className="mix-blend-multiply" alt={title} />
             </div>
           </div>
-          <div className="flex  px-4 mt-4 items-center md:items-start justify-center sm:justify-between flex-row gap-4 lg:gap-10 ">
+          <div className="flex px-4 mt-4 items-center md:items-start justify-center xs:justify-between flex-row gap-4 lg:gap-10 w-full ">
             {/* middle box */}
-            <div className="flex items-center justify-center w-36 sx:w-48 sm:w-64 md:w-[390px] overflow-hidden  ">
+            <div className="flex items-center justify-center w-36 xs:w-48 sm:w-64 md:w-[390px] overflow-hidden  ">
               <img
-                src={`${previewImg}`}
+                src={previewImg}
                 alt=""
-                className="w-full object-contain animate-fadeInAnimation transition-all"
+                className="w-full object-contain animate-fadeInAnimation transition-all mix-blend-multiply"
               />
             </div>
             {/* third content */}
@@ -115,13 +121,13 @@ const FoodDetail = () => {
               </p>
             </div>
           ) : (
-            <div className="flex items-center flex-col sm:flex-row">
-              <div className="flex flex-col text-center gap-2 sm:gap-4 w-1/2">
+            <div className="flex items-start flex-col gap-4 md:gap-0 sm:flex-row child:md:w-1/2 py-5 md:py-10 ">
+              <div className="flex flex-col  gap-2 sm:gap-4 text-justify px-10">
                 <div className="flex flex-col items-center gap-2 w-full">
                   <div className="flex flex-col w-12 rounded-full overflow-hidden items-center justify-center ">
                     <img
-                      className="w-full  "
-                      src="/images/ava-2.jpg'"
+                      className="w-full"
+                      src="/images/ava-2.jpg"
                       alt="avatar2"
                     />
                   </div>
@@ -136,10 +142,10 @@ const FoodDetail = () => {
                   </p>
                 </div>
                 <div className="flex flex-col items-center gap-2 w-full">
-                  <div className="flex flex-col w-12 rounded-full overflow-hidden items-center justify-center ">
+                  <div className="">
                     <img
-                      className="w-full  "
-                      src="/images/ava-1.jpg'"
+                      className="w-12 h-12 rounded-full object-cover overflow-hidden"
+                      src="/images/ava-1.jpg"
                       alt="avatar1"
                     />
                   </div>
@@ -154,25 +160,50 @@ const FoodDetail = () => {
                   </p>
                 </div>
               </div>
-              <div className="flex-all my-5 md:my-10 w-full ">
+              <div className="flex-all ">
                 <form
+                  onSubmit={handleSendComment}
                   action=""
-                  className="flex flex-col bg-third p-5 shadow-lg w-full sm:w-3/4 md:w-4/6 lg:w-1/2 rounded-lg child:outline-none child:pl-2"
+                  className="flex flex-col bg-third/60 px-5 py-2 space-y-2 shadow-lg w-full sm:w-3/4 md:w-4/6 lg:w-[80%] rounded-lg child:child:outline-none child:child:pl-2 child:flex child:flex-col"
                 >
-                  <label htmlFor="name">Name</label>
-                  <input type="text" name="name" className="rounded-lg" />
-
-                  <label htmlFor="email">Email</label>
-                  <input type="email" name="email" className="rounded-lg" />
-
-                  <label htmlFor="Feedback">FeedBack</label>
-                  <textarea
-                    name="Feedback"
-                    id=""
-                    cols="30"
-                    rows="10"
-                    className="rounded-lg"
-                  ></textarea>
+                  <h6 className="font-RocknRoll my-1">
+                    Write your Comment for us
+                  </h6>
+                  <div className="">
+                    <label htmlFor="name">Name</label>
+                    <input
+                      required
+                      type="text"
+                      name="name"
+                      className="rounded-lg py-1"
+                    />
+                  </div>
+                  <div className="">
+                    <label htmlFor="email">Email</label>
+                    <input
+                      required
+                      type="email"
+                      name="email"
+                      className="rounded-lg py-1"
+                    />
+                  </div>
+                  <div className="">
+                    <label htmlFor="Feedback">FeedBack</label>
+                    <textarea
+                      required
+                      name="Feedback"
+                      id=""
+                      cols="30"
+                      rows="10"
+                      className="rounded-lg py-1 resize-none"
+                    ></textarea>
+                  </div>
+                  <button
+                    type="submit"
+                    className="flex items-center justify-center border border-primary/30 rounded-lg text-xl text-center font-mono font-semibold p-2"
+                  >
+                    Send
+                  </button>
                 </form>
               </div>
             </div>
@@ -196,7 +227,6 @@ export default FoodDetail;
 
 export const loader = async ({ request, params }) => {
   const id = params.foodId;
-
   let { data: product, error } = await supabase
     .from('deliveryFoodApp')
     .select('*')

@@ -19,7 +19,9 @@ const Checkout = () => {
     console.log(objData);
     notify(
       `Dear ${objData.name} we received your request, thanks`,
-      'bottom-center'
+      'top-center',
+      'success',
+      2000
     );
     navigate('/');
     dispatch(cartActions.clearCart());
@@ -31,7 +33,7 @@ const Checkout = () => {
         {/* Shipping Address */}
         <div className="flex flex-col gap-3 md:gap-5 md:w-2/4 bg-third/75 shadow-xl rounded-lg p-5">
           <h4 className="font-RocknRoll text-base sm:text-xl md:text-2xl">
-            Your Address Information
+            Fill Out Information
           </h4>
           <form
             ref={formRef}

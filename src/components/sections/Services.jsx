@@ -1,5 +1,5 @@
 import React from 'react';
-const allServices = [
+const SERVICES_ITEMS = [
   {
     title: 'Quick Delivery',
     image: 'images/service-01.png',
@@ -36,7 +36,7 @@ const Services = () => {
       </div>
       {/* features */}
       <div className="flex items-center justify-center flex-wrap gap-y-10 gap-3 md:gap-5 my-10  ">
-        {allServices.map(item => (
+        {SERVICES_ITEMS.map(item => (
           <div className="flex-all flex-col gap-5 text-center" key={item.title}>
             <img className="w-20" src={item.image} alt="Food" />
             <h5 className="font-RocknRoll text-base xs:text-xl font-bold text-[#212529]">

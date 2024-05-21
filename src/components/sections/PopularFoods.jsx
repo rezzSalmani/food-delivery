@@ -1,8 +1,8 @@
 import React, { useEffect, useState, forwardRef } from 'react';
 import ProductItem from '../product/ProductItem';
-import { useLoaderData, useNavigation } from 'react-router-dom';
+import { useLoaderData } from 'react-router-dom';
 import { filterProductByCategory } from '../../util/util';
-const categories = [
+const CATEGORIES = [
   ['ALL'],
   ['BURGER', '/images/hamburger.png'],
   ['PIZZA', '/images/pizza.png'],
@@ -14,23 +14,28 @@ const PopularFoods = ({ init = 'ALL' }, ref) => {
   const [category, setCategory] = useState(init);
   const [allProducts, setAllProducts] = useState(foods);
   const [isLoading, setIsLoading] = useState(false);
-  const navigation = useNavigation();
+
   useEffect(() => {
     handleCategory(category);
   }, [category]);
 
   const handleCategory = async categoryName => {
     setCategory(categoryName);
-    if (categoryName === 'ALL') {
-      return setAllProducts(foods);
-    }
     setIsLoading(true);
-    const data = await filterProductByCategory(categoryName).then(data => {
-      setAllProducts(data);
+    try {
+      if (categoryName === 'ALL') {
+        setAllProducts(foods);
+      } else {
+        const data = await filterProductByCategory(categoryName);
+        setAllProducts(data);
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
       setIsLoading(false);
-    });
+    }
   };
-  // if (navigation.state === 'loading') return <span>Loading....</span>;
+
   return (
     <section
       className="my-10 md:my-20 flex-all flex-col gap-10 md:gap-16 "
@@ -40,7 +45,7 @@ const PopularFoods = ({ init = 'ALL' }, ref) => {
         Popular Foods
       </h2>
       <div className="flex-all w-full font-mono bg-[#DF2020] py-3 sm:py-5 rounded-lg px-3 gap-x-2 sm:gap-x-5 child:cursor-pointer child:rounded-lg child:py-3 child:px-4 child:flex-all child:gap-2 child:transition-all flex-wrap">
-        {categories.map(categoryName => (
+        {CATEGORIES.map(categoryName => (
           <button
             key={categoryName[0]}
             className={` text-zinc-100 ${
