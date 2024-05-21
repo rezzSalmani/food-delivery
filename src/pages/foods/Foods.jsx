@@ -6,7 +6,6 @@ import { supabase } from '../../supabaseClient';
 import { sortProducts } from '../../util/util';
 const Foods = () => {
   const [allFoods, setAllFoods] = useState(useLoaderData());
-  const navigation = useNavigation();
   // pagination state
   const [paginatedFoods, setPaginatedFoods] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -112,9 +111,7 @@ const Foods = () => {
             >
               Prev
             </button>
-            {navigation.state === 'loading' && (
-              <span>Loading your Data...</span>
-            )}
+
             {pageNumbers &&
               pageNumbers.map(item => (
                 <li
