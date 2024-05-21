@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Common from '../../components/UI/Common';
 import { json, useLoaderData, useNavigation } from 'react-router-dom';
-import ProductItem from '../../components/UI/ProductItem';
+import ProductItem from '../../components/product/ProductItem';
 import { supabase } from '../../supabaseClient';
 import { sortProducts } from '../../util/util';
 const Foods = () => {

@@ -1,3 +1,5 @@
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import Layout from './components/layout/Layout';
 import Home from './pages/home/Home';
 import Foods, { loader as foodsLoader } from './pages/foods/Foods';
 import Cart from './pages/cart/Cart';
@@ -6,8 +8,6 @@ import Checkout from './pages/checkout/Checkout';
 import FoodDetail, {
   loader as foodDetailLoader,
 } from './pages/foodDetail/FoodDetail';
-import Layout from './components/layout/Layout';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Error from './components/UI/Error';
 
 const router = createBrowserRouter([
@@ -38,7 +38,6 @@ const router = createBrowserRouter([
   },
 ]);
 function App() {
-  console.log('first');
   return <RouterProvider router={router}></RouterProvider>;
 }
 

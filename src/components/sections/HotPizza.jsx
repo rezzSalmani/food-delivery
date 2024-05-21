@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ProductItem from '../UI/ProductItem';
+import ProductItem from '../product/ProductItem';
 import { useLoaderData } from 'react-router-dom';
 
 const HotPizza = () => {

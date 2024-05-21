@@ -6,7 +6,10 @@ const uiSlice = createSlice({
   },
   reducers: {
     showCart(state) {
-      state.cartIsVisible = !state.cartIsVisible;
+      state.cartIsVisible = true;
+    },
+    hideCart(state) {
+      state.cartIsVisible = false;
     },
   },
 });

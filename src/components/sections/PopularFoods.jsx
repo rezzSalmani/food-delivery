@@ -1,5 +1,5 @@
 import React, { useEffect, useState, forwardRef } from 'react';
-import ProductItem from '../UI/ProductItem';
+import ProductItem from '../product/ProductItem';
 import { useLoaderData, useNavigation } from 'react-router-dom';
 import { filterProductByCategory } from '../../util/util';
 const categories = [

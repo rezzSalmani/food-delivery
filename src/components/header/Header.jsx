@@ -1,11 +1,12 @@
-import React, { useState, useRef, useEffect } from 'react';
-
-import CartModal from '../UI/CartModal';
-import { uiActions } from '../../store/uiSlice';
-import { Link, NavLink, useNavigation } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link, NavLink, useNavigation } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { uiActions } from '../../store/uiSlice';
+import CartModal from '../UI/CartModal';
 import LoadingIndicator from '../UI/LoadingIndicator';
-const nav__links = [
+import { useOutsideClick } from '../../util/util';
+const NAV_LINKS = [
   {
     display: 'Home',
     path: '/',
@@ -25,39 +26,32 @@ const nav__links = [
 ];
 const Header = () => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const dispatch = useDispatch();
+  const cartRef = useRef();
   const cartIsVisible = useSelector(state => state.ui.cartIsVisible);
   const cartItems = useSelector(state => state.cart.items);
   const navigation = useNavigation();
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.pageYOffset > 0) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+  const handleUserDashboard = () => {
+    toast.warning('account is not available!', {
+      position: 'bottom-right',
+      autoClose: 1000,
+    });
+  };
+  useOutsideClick(() => setMenuIsOpen(false), cartRef);
+
   return (
     <>
       <CartModal
         open={cartIsVisible}
-        onClose={() => dispatch(uiActions.showCart())}
+        onClose={() => dispatch(uiActions.hideCart())}
       />
       <header
-        className={`header w-full h-[100px] bg-white leading-[100px] py-5 px-5 ${
-          isScrolled ? 'sticky top-0 left-0 z-40' : ''
-        }`}
+        className={`header sticky top-0 left-0 z-40 w-full h-[100px] bg-white leading-[100px] py-5 px-5`}
       >
         <div className="container flex items-center justify-between ">
           <Link
             to={'/'}
-            className="flex flex-col items-center hover:scale-110 transition-all cursor-pointer"
+            className="flex gap-1 xs:flex-col xs:gap-0 items-center hover:scale-110 transition-all cursor-pointer"
           >
             <img
               className="w-8 h-8 md:w-[50px] md:h-[50px]"
@@ -70,11 +64,11 @@ const Header = () => {
             <h4>Stay Happy with us :)</h4>
           </div>
           <div className="hidden md:flex">
-            <ul className="flex items-center font-mono gap-3 xs:gap-5 md:gap-10 child:transition-all font-medium child:cursor-pointer text-sm md:text-base">
+            <ul className="flex items-center font-mono gap-3 xs:gap-5 md:gap-10 child:transition-all font-semibold lg:font-medium child:cursor-pointer text-sm md:text-base lg:text-xl">
               {navigation.state === 'loading' ? (
                 <LoadingIndicator />
               ) : (
-                nav__links.map(item => (
+                NAV_LINKS.map(item => (
                   <li key={item.display} className="hover:text-secondary">
                     <NavLink
                       className={navClass =>
@@ -114,7 +108,10 @@ const Header = () => {
                   : '0'}
               </span>
             </span>
-            <span className="hover:scale-110 transition-all ">
+            <span
+              className="hover:scale-110 transition-all"
+              onClick={handleUserDashboard}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -155,6 +152,7 @@ const Header = () => {
           </div>
         </div>
         <div
+          ref={cartRef}
           className={`fixed h-screen right-0 top-0 bottom-0 transition-all bg-zinc-100 ${
             menuIsOpen ? 'w-3/5 visible' : 'invisible w-0'
           }`}
@@ -184,7 +182,7 @@ const Header = () => {
             className="flex-col mt-14 items-center font-mono child:transition-all font-medium child:cursor-pointer 
     text-sm md:text-base divide-y divide-gray-300 child:py-4 child:w-full child:flex child:justify-center px-5"
           >
-            {nav__links.map(item => (
+            {NAV_LINKS.map(item => (
               <li
                 key={item.display}
                 className="hover:text-secondary"
@@ -206,7 +204,7 @@ const Header = () => {
         </div>
       </header>
       {cartIsVisible && (
-        <div className="fixed top-0 left-0 w-full h-full z-40 bg-black/50"></div>
+        <div className="fixed top-0 left-0 w-full h-full z-40 bg-black/20"></div>
       )}
     </>
   );

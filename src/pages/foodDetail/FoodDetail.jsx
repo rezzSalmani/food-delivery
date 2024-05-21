@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Common from '../../components/UI/Common';
 import StarRating from '../../components/UI/StarRating';
-import ProductItem from '../../components/UI/ProductItem';
+import ProductItem from '../../components/product/ProductItem';
 import { json, useLoaderData, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { cartActions } from '../../store/cartSlice';

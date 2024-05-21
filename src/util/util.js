@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { supabase } from '../supabaseClient';
 
 export const filterProductByCategory = async productCategory => {
@@ -44,4 +45,23 @@ export const sortProducts = (option, foods) => {
       break;
   }
   return sortedProducts;
+};
+export const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+};
+export const useOutsideClick = (onClose, modalRef) => {
+  useEffect(() => {
+    const handleClickOutside = event => {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        onClose();
+      }
+    };
+    document.addEventListener('click', handleClickOutside, true);
+    return () => {
+      document.removeEventListener('click', handleClickOutside, true);
+    };
+  }, [onClose, modalRef]);
 };

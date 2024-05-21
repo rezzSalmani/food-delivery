@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { cartActions } from '../../store/cartSlice';
 import { useDispatch } from 'react-redux';
-import { notify } from './notify';
+import { notify } from '../UI/notify';
 
 const ProductItem = ({ image01, title, price, id }) => {
   const dispatch = useDispatch();
