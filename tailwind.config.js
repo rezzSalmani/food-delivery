@@ -16,7 +16,7 @@ export default {
       animation: {
         'spin-slow': 'spin 1.5s linear ',
         'bounce-one': 'bounce 2s linear',
-        'fadeInAnimation': 'fadeInAnimation 1s ease-in-out ',
+        'fadeInAnimation': 'fadeInAnimation 1s ease ',
       },
       keyframes: {
         fadeInAnimation: {

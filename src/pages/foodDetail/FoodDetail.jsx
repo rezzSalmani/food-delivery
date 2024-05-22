@@ -13,14 +13,19 @@ const FoodDetail = () => {
   const dispatch = useDispatch();
   const { product } = useLoaderData();
   const { allFoods } = useLoaderData();
-
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const { title, price, category, desc, image01, image02, image03, id } =
     product?.[0];
-  const [previewImg, setPreviewImg] = useState('');
+  const productImages = [image01, image02, image03];
   useEffect(() => {
-    setPreviewImg(image01);
-    window.scrollTo(0, 0);
-  }, [product?.[0]]);
+    const interval = setInterval(() => {
+      setCurrentImageIndex(prevIndex =>
+        prevIndex < productImages.length - 1 ? prevIndex + 1 : 0
+      );
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, []);
   const relatedProduct = allFoods.filter(
     item => item.category === product?.[0].category
   );
@@ -37,36 +42,33 @@ const FoodDetail = () => {
     <section className="">
       <Common title={title} />
       <div className="container ">
-        <div className="flex flex-col items-center sm:flex-row  md:gap-5 my-5 sm:my-10 xl:w-4/5 lg:justify-evenly">
+        <div className="flex flex-col items-center sm:flex-row md:gap-5 my-8 sm:my-15 xl:w-4/5 lg:justify-evenly">
           {/* left box */}
           <div className="flex flex-row sm:flex-col justify-center gap-4 xs:py-5 sm:py-10 child:w-14 child:md:w-24 child:cursor-pointer child:transition-all">
-            <div
-              className="hover:scale-110 "
-              onClick={() => setPreviewImg(image01)}
-            >
-              <img src={image01} className="mix-blend-multiply" alt={title} />
-            </div>
-            <div
-              className="hover:scale-110"
-              onClick={() => setPreviewImg(image02)}
-            >
-              <img src={image02} className="mix-blend-multiply" alt={title} />
-            </div>
-            <div
-              className="hover:scale-110"
-              onClick={() => setPreviewImg(image03)}
-            >
-              <img src={image03} className="mix-blend-multiply" alt={title} />
-            </div>
+            {productImages.map((image, index) => (
+              <div
+                className="hover:scale-110 "
+                onClick={() => setCurrentImageIndex(index)}
+              >
+                <img src={image} className="mix-blend-multiply" alt={title} />
+              </div>
+            ))}
           </div>
-          <div className="flex px-4 mt-4 items-center md:items-start justify-center xs:justify-between flex-row gap-4 lg:gap-10 w-full ">
+          <div className="flex px-4 mt-4 items-center justify-center xs:justify-between gap-4 lg:gap-10 w-full">
             {/* middle box */}
-            <div className="flex items-center justify-center w-36 xs:w-48 sm:w-64 md:w-[390px] overflow-hidden  ">
-              <img
-                src={previewImg}
-                alt=""
-                className="w-full object-contain animate-fadeInAnimation transition-all mix-blend-multiply"
-              />
+            <div className="relative flex items-center justify-center h-full w-36 xs:w-48 sm:w-64 md:w-[390px]">
+              {productImages?.map((image, index) => (
+                <img
+                  key={index}
+                  src={image}
+                  alt="food image"
+                  className={`absolute inset-0 mx-auto my-auto object-cover w-full h-auto transition-all duration-500 ease-in-out mix-blend-multiply  ${
+                    currentImageIndex === index
+                      ? 'opacity-100 visible scale-100 -translate-x-0 rotate-0'
+                      : 'opacity-0 invisible scale-110 -translate-x-4 rotate-6'
+                  }`}
+                />
+              ))}
             </div>
             {/* third content */}
             <div className="flex flex-col gap-2 sm:gap-5 font-RocknRoll mt-5 sm:mt-10">
@@ -121,7 +123,7 @@ const FoodDetail = () => {
               </p>
             </div>
           ) : (
-            <div className="flex items-start flex-col gap-4 md:gap-0 sm:flex-row child:md:w-1/2 py-5 md:py-10 ">
+            <div className="flex items-center md:items-start flex-col gap-8 md:gap-0 sm:flex-row child:w-full  py-5 md:py-10 ">
               <div className="flex flex-col  gap-2 sm:gap-4 text-justify px-10">
                 <div className="flex flex-col items-center gap-2 w-full">
                   <div className="flex flex-col w-12 rounded-full overflow-hidden items-center justify-center ">
@@ -160,16 +162,16 @@ const FoodDetail = () => {
                   </p>
                 </div>
               </div>
-              <div className="flex-all ">
+              <div className="flex-all w-full">
                 <form
                   onSubmit={handleSendComment}
                   action=""
-                  className="flex flex-col bg-third/60 px-5 py-2 space-y-2 shadow-lg w-full sm:w-3/4 md:w-4/6 lg:w-[80%] rounded-lg child:child:outline-none child:child:pl-2 child:flex child:flex-col"
+                  className="flex flex-col bg-third/60 px-5 py-2 space-y-2 shadow-lg w-full  md:w-full xl:w-3/4 rounded-lg child:child:outline-none child:child:pl-2 child:flex child:flex-col"
                 >
                   <h6 className="font-RocknRoll my-1">
                     Write your Comment for us
                   </h6>
-                  <div className="">
+                  <div>
                     <label htmlFor="name">Name</label>
                     <input
                       required
@@ -178,7 +180,7 @@ const FoodDetail = () => {
                       className="rounded-lg py-1"
                     />
                   </div>
-                  <div className="">
+                  <div>
                     <label htmlFor="email">Email</label>
                     <input
                       required
@@ -187,7 +189,7 @@ const FoodDetail = () => {
                       className="rounded-lg py-1"
                     />
                   </div>
-                  <div className="">
+                  <div>
                     <label htmlFor="Feedback">FeedBack</label>
                     <textarea
                       required

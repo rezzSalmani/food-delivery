@@ -28,11 +28,13 @@ const Header = () => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const dispatch = useDispatch();
   const cartRef = useRef();
+  const navigation = useNavigation();
+
   const cartIsVisible = useSelector(state => state.ui.cartIsVisible);
   const cartItems = useSelector(state => state.cart.items);
-  const navigation = useNavigation();
+
   const handleUserDashboard = () => {
-    toast.warning('account is not available!', {
+    toast.warning("account section isn't available!", {
       position: 'bottom-right',
       autoClose: 1000,
     });

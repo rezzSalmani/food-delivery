@@ -21,7 +21,7 @@ const Star = ({ onClick, full, onHoverIn, onHoverOut, color, size }) => {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke={color}
-          className="w-5 h-5"
+          className="w-5 h-5 md:w-6 md:h-6"
         >
           <path
             strokeLinecap="round"
@@ -35,6 +35,7 @@ const Star = ({ onClick, full, onHoverIn, onHoverOut, color, size }) => {
           fill="none"
           viewBox="0 0 24 24"
           stroke={color}
+          className="w-5 h-5 md:w-6 md:h-6"
         >
           <path
             strokeLinecap="round"

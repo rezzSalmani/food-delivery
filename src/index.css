@@ -41,8 +41,7 @@
     line-height: 100px;
   }
   .Common-background {
-    background: linear-gradient(#212245b2, #212245b2),
-      url(../public/images/banner.jpg);
+    background: linear-gradient(#212245b2, #212245b2), url(/images/banner.jpg);
   }
 }
 
