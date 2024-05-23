@@ -32,6 +32,14 @@ const Header = () => {
 
   const cartIsVisible = useSelector(state => state.ui.cartIsVisible);
   const cartItems = useSelector(state => state.cart.items);
+  useEffect(() => {
+    if (cartIsVisible) {
+      document.body.style.overflow = 'hidden';
+    }
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [cartIsVisible]);
 
   const handleUserDashboard = () => {
     toast.warning("account section isn't available!", {

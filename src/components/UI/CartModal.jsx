@@ -32,17 +32,17 @@ const CartModal = ({ open, onClose }) => {
   return createPortal(
     <div
       ref={modalRef}
-      className={`flex flex-col gap-5 bg-zinc-100 h-screen fixed right-0 top-0 transition-all shadow-2xl z-50 overflow-hidden ${
+      className={`flex flex-col bg-zinc-100 h-screen fixed right-0 top-0 transition-all shadow-2xl z-50 duration-200 ease-in-out  ${
         open
-          ? 'w-3/5 xs:w-2/4 md:w-2/6 lg:w-1/3 xl:w-1/4 visible '
-          : ' w-0 invisible '
+          ? 'w-3/5 xs:w-2/4 md:w-2/6 lg:w-1/3 xl:w-1/4 opacity-100 visible '
+          : ' w-0 opacity-0 invisible '
       }`}
     >
       <span
         onClick={() => {
           onClose();
         }}
-        className="inline-block w-fit mt-10 pl-4 hover:text-secondary  transition-all cursor-pointer"
+        className="inline-block w-fit mt-10 pl-4 hover:text-secondary transition-all cursor-pointer"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -60,7 +60,7 @@ const CartModal = ({ open, onClose }) => {
         </svg>
       </span>
       {/* content */}
-      <div className="divide-y-2 divide-third rounded-lg space-y-2">
+      <div className="divide-y-2 divide-third rounded-lg space-y-2 overflow-auto">
         {cartItems.length > 0 ? (
           cartItems.map(item => (
             <div
@@ -123,7 +123,7 @@ const CartModal = ({ open, onClose }) => {
         )}
       </div>
       {/* total */}
-      <div className="flex flex-col items-center gap-2 bg-secondary/80 w-full h-24 absolute bottom-0 p-4 ">
+      <div className="flex flex-col items-center gap-2 bg-secondary/80 w-full h-24  bottom-0 p-4 ">
         <div className="flex w-full sm:text-xl text-zinc-50 justify-between ">
           <span>Subtotal:</span>
           <span>
@@ -133,7 +133,7 @@ const CartModal = ({ open, onClose }) => {
 
         <button
           onClick={handleCheckout}
-          className="flex-all px-3 py-2 rounded-lg bg-zinc-100"
+          className="flex-all px-3 py-2 rounded-lg bg-zinc-100 hover:bg-third transition-colors"
         >
           Checkout
         </button>
