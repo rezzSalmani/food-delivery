@@ -60,11 +60,11 @@ const CartModal = ({ open, onClose }) => {
         </svg>
       </span>
       {/* content */}
-      <div className="divide-y-2 divide-third rounded-lg space-y-2 overflow-auto">
+      <div className="divide-y-2 divide-third rounded-lg space-y-2 overflow-auto mt-2 md:mt-4">
         {cartItems.length > 0 ? (
           cartItems.map(item => (
             <div
-              className="flex xs:items-center justify-evenly xs:justify-between pt-4 gap-1 sm:gap-4 xs:px-2 xs:py-2"
+              className="flex xs:items-center justify-evenly xs:justify-between gap-1 sm:gap-4 px-2 py-2"
               key={item.id}
             >
               <div className="flex flex-col xs:flex-row items-center gap-2 sm:gap-3 xl:gap-6">
@@ -93,7 +93,7 @@ const CartModal = ({ open, onClose }) => {
                 </div>
               </div>
               {/* fully remove item */}
-              <div className=" pr-2 md:pr-5">
+              <div className="flex items-center justify-center pr-2 md:pr-5">
                 <span
                   className="inline-block cursor-pointer hover:text-secondary transition-all"
                   onClick={() => dispatch(cartActions.removeWholeItem(item.id))}
@@ -117,13 +117,13 @@ const CartModal = ({ open, onClose }) => {
             </div>
           ))
         ) : (
-          <h4 className="font-RocknRoll text-sm px-4 sm:text-base md:text-xl">
+          <h4 className="font-RocknRoll text-sm px-4 sm:text-base md:text-xl mt-10">
             No item added to the cart!
           </h4>
         )}
       </div>
       {/* total */}
-      <div className="flex flex-col items-center gap-2 bg-secondary/80 w-full h-24  bottom-0 p-4 ">
+      <div className="flex flex-col items-center gap-2 bg-secondary/80 w-full h-24 mt-auto  p-4 ">
         <div className="flex w-full sm:text-xl text-zinc-50 justify-between ">
           <span>Subtotal:</span>
           <span>

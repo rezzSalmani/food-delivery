@@ -57,8 +57,8 @@ const Foods = () => {
       <Common title="All Foods" />
       <div className="container">
         {/* input / select box */}
-        <div className=" flex items-center justify-between my-10">
-          <div className="flex items-center border border-third w-1/2 py-1 xs:py-2 rounded-lg ">
+        <div className=" flex flex-col xs:flex-row items-center justify-between gap-1 my-10">
+          <div className="flex items-center border border-third w-full xs:w-1/2 py-1 xs:py-2 rounded-lg ">
             <input
               type="text"
               value={searchTerm}
@@ -83,9 +83,9 @@ const Foods = () => {
               </svg>
             </span>
           </div>
-          <div className="w-1/2 flex justify-end">
+          <div className="w-full xs:w-fit flex justify-end">
             <select
-              className="md:w-1/2 border border-third py-1 xs:py-2 rounded-lg outline-none child:text-sm child:sm:text-base cursor-pointer"
+              className="w-full border border-third py-1 xs:py-2 rounded-lg outline-none child:text-sm child:sm:text-base cursor-pointer"
               value={sortingOption}
               onChange={e => setSortingOption(e.target.value)}
             >
