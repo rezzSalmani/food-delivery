@@ -11,7 +11,7 @@ const Comments = () => {
           </h5>
           <h2 className="font-RocknRoll text-2xl sm:text-3xl ">
             What our{' '}
-            <span className="inline-block hover:scale-110 hover:-rotate-2 transition-all text-secondary">
+            <span className="inline-block scale-105 transition-all text-secondary">
               customers
             </span>{' '}
             are saying

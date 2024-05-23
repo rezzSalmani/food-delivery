@@ -5,16 +5,16 @@ const Hero = ({ onOrderNowClick }) => {
     <section className="Hero sm:my-10">
       <div className="flex flex-col md:flex-row items-center lg:items-start gap-y-5">
         {/* text Content */}
-        <div className="flex flex-col gap-5 mt-10 basis-1/2 text-center md:text-left">
+        <div className="flex flex-col gap-5 md:mt-10 basis-1/2 text-center md:text-left">
           <h5 className="text-base sm:text-xl font-RocknRoll text-[#212529]">
             Fast and easy food delivery service to spoil the foodie within you
           </h5>
-          <h1 className="text-3xl leading-10 sm:text-[40px] xs:leading-[55px] font-RocknRoll text-[#212245] md:max-w-[30rem]">
-            <span className="inline-block text-secondary transition-all hover:scale-110 hover:-rotate-2">
+          <h1 className="text-3xl leading-10 lg:text-[40px] xs:leading-[55px] font-RocknRoll text-[#212245] md:max-w-[30rem]">
+            <span className="inline-block text-secondary transition-all scale-110 -rotate-2">
               HUNGRY?
             </span>{' '}
             just wait food at
-            <span className="text-secondary transition-all"> your door!</span>
+            <span className="text-secondary"> your door!</span>
           </h1>
           <p className="font-lato text-sm xs:text-base text-[#777777]">
             The food delivery service of us ensures high-quality and timely
@@ -23,7 +23,7 @@ const Hero = ({ onOrderNowClick }) => {
           {/* buttons */}
           <div className="flex items-center gap-10 justify-center md:justify-start text-sm xs:text-base">
             <button
-              className="flex items-center justify-center py-2 px-2 xs:px-5 bg-secondary text-zinc-100 rounded-md font-lato hover:bg-primary transition-all ease-in"
+              className="flex items-center justify-center py-2 px-2 xs:px-5 bg-secondary text-zinc-100 rounded-md font-lato hover:bg-primary duration-200 transition-all ease-in"
               onClick={onOrderNowClick}
             >
               Order Now

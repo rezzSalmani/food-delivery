@@ -85,7 +85,7 @@ const Foods = () => {
           </div>
           <div className="w-1/2 flex justify-end">
             <select
-              className="w-1/2 border border-third py-1 xs:py-2 rounded-lg outline-none child:text-sm child:sm:text-base"
+              className="md:w-1/2 border border-third py-1 xs:py-2 rounded-lg outline-none child:text-sm child:sm:text-base cursor-pointer"
               value={sortingOption}
               onChange={e => setSortingOption(e.target.value)}
             >

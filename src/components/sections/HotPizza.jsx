@@ -9,7 +9,7 @@ const HotPizza = () => {
   );
   return (
     <section className="my-10 md:my-20 flex flex-col gap-10 md:gap-20 overflow-hidden">
-      <h2 className="font-RocknRoll text-center text-3xl hover:scale-110 hover:-rotate-2 transition-all hover:text-secondary  ">
+      <h2 className="font-RocknRoll text-center text-3xl scale-110 -rotate-2  text-secondary md:scale-100 md:-rotate-0  md:text-primary hover:scale-110 hover:-rotate-2  hover:text-secondary transition-all duration-150">
         Hot Pizza
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">

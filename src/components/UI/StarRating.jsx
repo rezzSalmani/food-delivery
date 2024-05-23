@@ -18,7 +18,6 @@ const StarRating = ({ maxRating = 5, color = '#fcc419', size = 18 }) => {
     lineHeight: '1',
     margin: '0',
     color: color,
-    fontSize: `16px`,
   };
   return (
     <div style={containerStyle} className="flex items-center justify-between">
@@ -35,7 +34,7 @@ const StarRating = ({ maxRating = 5, color = '#fcc419', size = 18 }) => {
           />
         ))}
       </div>
-      <p style={textStyle} className="w-3 ">
+      <p style={textStyle} className="w-3 text-sm md:text-base">
         {tempRating || rating || ''}
       </p>
     </div>

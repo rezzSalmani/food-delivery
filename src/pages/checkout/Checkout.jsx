@@ -31,7 +31,7 @@ const Checkout = () => {
       <Common title="Checkout" />
       <div className="container flex flex-col-reverse md:flex-row justify-between items-center md:items-start flex-wrap py-10 gap-5 lg:px-10">
         {/* Shipping Address */}
-        <div className="flex flex-col gap-3 md:gap-5 md:w-2/4 bg-third/75 shadow-xl rounded-lg p-5">
+        <div className="flex flex-col gap-3 md:gap-5 md:w-2/4 bg-third/60 shadow-xl rounded-lg p-5">
           <h4 className="font-RocknRoll text-base sm:text-xl md:text-2xl">
             Fill Out Information
           </h4>
@@ -79,7 +79,7 @@ const Checkout = () => {
           </form>
         </div>
         {/* Checkout */}
-        <div className="p-5 bg-third w-full sm:w-2/5 rounded-lg space-y-8 font-RocknRoll shadow-lg text-sm sm:text-base">
+        <div className="p-5 bg-third/60 w-full sm:w-2/5 rounded-lg space-y-8 font-RocknRoll shadow-lg text-sm sm:text-base">
           <div className="space-y-2">
             <div className="flex items-center justify-between">
               <span className="">Subtotal:</span>

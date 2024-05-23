@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import { cartActions } from '../../store/cartSlice';
 import { notify } from '../../components/UI/notify';
 import { supabase } from '../../supabaseClient';
+import { scrollToTop } from '../../util/util';
 
 const FoodDetail = () => {
   const [tab, setTab] = useState('desc');
@@ -16,7 +17,13 @@ const FoodDetail = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const { title, price, category, desc, image01, image02, image03, id } =
     product?.[0];
+
   const productImages = [image01, image02, image03];
+
+  useEffect(() => {
+    scrollToTop();
+  }, []);
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex(prevIndex =>
@@ -26,13 +33,16 @@ const FoodDetail = () => {
 
     return () => clearInterval(interval);
   }, []);
+
   const relatedProduct = allFoods.filter(
     item => item.category === product?.[0].category
   );
+
   const addToCart = () => {
     dispatch(cartActions.addItem({ id, title, price, image: image01 }));
     notify();
   };
+
   const handleSendComment = e => {
     e.preventDefault();
     e.target.reset();
@@ -44,17 +54,18 @@ const FoodDetail = () => {
       <div className="container ">
         <div className="flex flex-col items-center sm:flex-row md:gap-5 my-8 sm:my-15 xl:w-4/5 lg:justify-evenly">
           {/* left box */}
-          <div className="flex flex-row sm:flex-col justify-center gap-4 xs:py-5 sm:py-10 child:w-14 child:md:w-24 child:cursor-pointer child:transition-all">
+          <div className="flex flex-row sm:flex-col justify-center gap-4 xs:py-5 sm:py-10 child:w-14 child:md:w-24 child:cursor-pointer ">
             {productImages.map((image, index) => (
               <div
-                className="hover:scale-110 "
+                className="hover:scale-110 transition-all duration-200 ease-linear"
                 onClick={() => setCurrentImageIndex(index)}
               >
                 <img src={image} className="mix-blend-multiply" alt={title} />
               </div>
             ))}
           </div>
-          <div className="flex px-4 mt-4 items-center justify-center xs:justify-between gap-4 lg:gap-10 w-full">
+
+          <div className="flex px-4 mt-4 items-center justify-evenly md:justify-between gap-4 lg:gap-10 w-full">
             {/* middle box */}
             <div className="relative flex items-center justify-center h-full w-36 xs:w-48 sm:w-64 md:w-[390px]">
               {productImages?.map((image, index) => (
@@ -71,7 +82,7 @@ const FoodDetail = () => {
               ))}
             </div>
             {/* third content */}
-            <div className="flex flex-col gap-2 sm:gap-5 font-RocknRoll mt-5 sm:mt-10">
+            <div className="flex flex-col w-fit sm:w-52 lg:w-72 gap-2 sm:gap-4 font-RocknRoll mt-5 sm:mt-10 ">
               <h4 className="text-base text-primary md:text-2xl lg:text-3xl">
                 {title}
               </h4>
