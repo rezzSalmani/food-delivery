@@ -41,14 +41,14 @@ const PopularFoods = ({ init = 'ALL' }, ref) => {
       className="my-10 md:my-20 flex-all flex-col gap-10 md:gap-16 "
       ref={ref}
     >
-      <h2 className="font-RocknRoll text-center text-3xl scale-110 -rotate-2  text-secondary md:scale-100 md:-rotate-0  md:text-primary hover:scale-110 hover:-rotate-2  hover:text-secondary transition-all duration-150">
+      <h2 className="font-RocknRoll text-center text-2xl xs:text-3xl scale-110 -rotate-2  text-secondary md:scale-100 md:-rotate-0  md:text-primary hover:scale-110 hover:-rotate-2  hover:text-secondary transition-all duration-150">
         Popular Foods
       </h2>
-      <div className="flex-all w-full font-mono bg-[#DF2020] py-3 sm:py-5 rounded-lg px-3 gap-x-2 sm:gap-x-5 child:cursor-pointer child:rounded-lg child:py-3 child:px-4 child:flex-all child:gap-2 child:transition-all duration-150 flex-wrap">
+      <div className="flex-all w-full font-mono bg-[#DF2020] py-2 sm:py-4 rounded-lg px-3 gap-x-2 sm:gap-x-5 child:cursor-pointer child:rounded-lg child:py-3 child:px-4 child:flex-all child:gap-2 child:transition-all duration-150 flex-wrap">
         {CATEGORIES.map(categoryName => (
           <button
             key={categoryName[0]}
-            className={` text-zinc-100 ${
+            className={` text-zinc-100 md:text-lg ${
               category === categoryName[0]
                 ? 'bg-white text-zinc-900'
                 : 'text-zinc-100"'

@@ -28,10 +28,10 @@ const Category = ({ onCategoryClick }) => {
   };
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-5 gap-y-5 mb-10. md:mb-20 ">
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 xs:gap-5 mb-10. md:mb-20 ">
       {CATEGORY_ITEMS.map((item, index) => (
         <div
-          className="flex items-center gap-2 xs:gap-4 p-3 xs:p-5 bg-third rounded-md hover:-translate-y-3 transition-all duration-200 ease-linear group cursor-pointer overflow-hidden"
+          className="flex items-center gap-1 xs:gap-4 p-3 xs:p-5 bg-third rounded-md hover:-translate-y-3 transition-all duration-200 ease-linear group cursor-pointer overflow-hidden"
           key={index}
           onClick={() => handleCategoryClick(`${item.category}`)}
         >
