@@ -95,6 +95,10 @@ This project is a comprehensive online food shop built using React, Redux, and T
 
    The application uses React Router's loader functionality to fetch data, ensuring a seamless and efficient user experience. This includes handling loading          states and error cases, providing users with a clear understanding of the application's status.
 
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
 ### Built With
 
 * [![React][React.js]][React-url]
@@ -159,9 +163,9 @@ This is an example of how to list things you need to use the software and how to
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
+## Contributing
 
-
-
+  Contributions to this project are welcome. If you find any issues or have suggestions for improvements, please feel free to open a new issue or submit a pull      request.
 
 <!-- CONTACT -->
 ## Contact
@@ -172,16 +176,6 @@ Project Link: [https://github.com/rezzSalmani/food-delivery](https://github.com/
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-* []()
-* []()
-* []()
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
