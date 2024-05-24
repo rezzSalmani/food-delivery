@@ -120,11 +120,7 @@ To run this project locally, you will need to follow these steps:
 
 the project uses <strong>supabase</strong> as database, so you will need to install supabase and store it's url and key in a local variable ``.env.local`` file
 This is an example of how to list things you need to use the software and how to install them.
-* .env.local
-  ```.env
-  VITE_SUPABASE_URL = 'ENTER YOUR API';
-  VITE_SUPABASE_ANON_KEY = 'ENTER YOUR API';
-  ```
+
 
 ### Installation
 
