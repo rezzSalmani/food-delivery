@@ -22,13 +22,15 @@
 <h3 align="center">Foodie</h3>
 
   <p align="center">
-    Food delivery web application
+      <strong>Food delivery web application</strong>
+
+    
 This project is a comprehensive online food shop built using React, Redux, and Tailwind CSS. It provides users with a seamless and intuitive shopping experience, allowing them to browse, select, and manage their favorite fast food items.
     <br />
     <a href="https://github.com/rezzSalmani/food-delivery"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/rezzSalmani/food-delivery">View Demo</a>
+    <a href="https://foodie.liara.run/">View Demo</a>
     ·
     <a href="https://github.com/rezzSalmani/food-delivery/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
     ·
@@ -56,11 +58,7 @@ This project is a comprehensive online food shop built using React, Redux, and T
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
@@ -71,55 +69,82 @@ This project is a comprehensive online food shop built using React, Redux, and T
 
 [![Product Name Screen Shot](https://github.com/rezzSalmani/food-delivery/blob/master/src/assets/screenShots/Foodie.png)](https://github.com/rezzSalmani/food-delivery)
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Key Features
-* Product Browsing: Users can explore a wide range of fast food options, each with detailed product information, including descriptions, pricing, and availability.
-* Favorites and Cart Management: Users can add their favorite items to a personalized shopping cart. The cart allows users to remove or adjust the quantity of products as needed.
-* Product Details and Commenting: Users can view detailed information about each product, including user reviews and the ability to add their own comments.
-* Responsive Design: The application is designed with Tailwind CSS, ensuring a visually appealing and responsive user interface that adapts seamlessly across different devices and screen sizes.
-* State Management with Redux: The project utilizes Redux for efficient state management, enabling a centralized and predictable data flow throughout the application.
+* **Product Browsing**
+
+  Users can explore a wide range of fast food options, each with detailed product information, including descriptions, pricing, and availability.
+* **Favorites and Cart Management**
+
+   Users can add their favorite items to a personalized shopping cart. The cart allows users to remove or adjust the quantity of products as needed.
+* **Responsive Design**
+
+  The application is designed with Tailwind CSS, ensuring a visually appealing and responsive user interface that adapts seamlessly across different devices and     screen sizes.
+* **State Management with Redux**
+ 
+  The project utilizes Redux for efficient state management, enabling a centralized and predictable data flow throughout the application.
+* **Food Menu Pagination**
+
+   Users can navigate through the available food items using a pagination system, allowing them to easily browse and discover new products.
+* **Sorting Functionality**
+
+   Users can sort the food items based on various criteria, such as name, price, and other relevant attributes, to help them find their desired products more efficiently.
+* **React Router Loader Functionality**
+
+   The application uses React Router's loader functionality to fetch data, ensuring a seamless and efficient user experience. This includes handling loading          states and error cases, providing users with a clear understanding of the application's status.
 
 ### Built With
 
-* [![Next][Next.js]][Next-url]
 * [![React][React.js]][React-url]
-
+* ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
+* ![Redux](https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white)
+* ![Supabase](https://img.shields.io/badge/Supabase-181818?style=for-the-badge&logo=supabase&logoColor=white)
+* [![tailwindcss](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
+### Technologies Used
+ * React: A powerful JavaScript library for building user interfaces.
+ * Redux: A predictable state container for managing the application's state.
+ * Tailwind CSS: A utility-first CSS framework for rapid UI development.
+ * React Router: A routing library for React, providing client-side routing and navigation.
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+To run this project locally, you will need to follow these steps:
 
 ### Prerequisites
 
+the project uses <strong>supabase</strong> as database, so you will need to install supabase and store it's url and key in a local variable ``.env.local`` file
 This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
+* .env.local
+  ```.env
+  VITE_SUPABASE_URL = 'ENTER YOUR API';
+  VITE_SUPABASE_ANON_KEY = 'ENTER YOUR API';
   ```
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
+1. Get a free API Key at [https://supabase.com](https://supabase.com)
 2. Clone the repo
    ```sh
    git clone https://github.com/rezzSalmani/food-delivery.git
    ```
 3. Install NPM packages
    ```sh
-   npm install
+    npm install
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+4. Enter your API in `.env.local`
+   ```.env
+   VITE_SUPABASE_URL = 'ENTER YOUR API';
+   VITE_SUPABASE_ANON_KEY = 'ENTER YOUR API';
+   ```
+5. Start the development server:
+   ```sh
+   npm run dev
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -129,25 +154,14 @@ This is an example of how to list things you need to use the software and how to
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+* user can see the food details with click on the food name or image
+* to order a food user need to add at least one product to the cart
+* after adding product user can see the final price and also fill the form to final payment.
+* removing the product is accessable from check page or user cart
 
-_For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
-
-See the [open issues](https://github.com/rezzSalmani/food-delivery/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
